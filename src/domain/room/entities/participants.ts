@@ -13,4 +13,8 @@ export default class Participant {
     this._id = props.id ?? randomUUID();
     this._name = props.name;
   }
+
+  get id(): string {
+    return this._id
+  }
 }

@@ -13,7 +13,7 @@ export default class Room {
   private _id: string;
   private _name: string;
   private _tasks?: Task[];
-  private _participants?: Participant[];
+  private _participants: Participant[];
 
   constructor(props: RoomProps) {
     this._id = props.id || randomUUID();
@@ -22,14 +22,22 @@ export default class Room {
     this._tasks = props.tasks ?? [];
   }
 
-  get participants(): Participant[] | undefined {
+  joinRoom(participant: Participant) {
+    this.participants.push(participant)
+  }
+
+  get participants(): Participant[] {
     return this._participants;
   }
   get id(): string {
-    return this._id;
+    return this._abcd;
   }
 
   get name(): string {
     return this._name;
+  }
+
+  set id(id: string) {
+    this._id= id
   }
 }
