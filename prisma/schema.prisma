@@ -11,6 +11,13 @@ datasource db {
 }
 
 model Room {
-  id   String @id @default(uuid())
-  name String
+  id    String @id @default(uuid())
+  name  String
+  users User[]
+}
+
+model User {
+  id    String @id @default(uuid())
+  name  String
+  rooms Room[]
 }
