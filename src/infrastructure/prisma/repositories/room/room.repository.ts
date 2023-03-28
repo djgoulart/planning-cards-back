@@ -1,12 +1,12 @@
-import { PrismaClient } from "@prisma/client";
-import Room from "../../../../domain/room/entities/room";
-import { RoomRepositoryInterface } from "src/domain/room/repository/room.repository";
+
+import { RoomRepositoryInterface } from "@/domain/room/repository/room.repository";
+import Participant from "@/domain/room/entities/participants";
+import client from "../../client";
+import Room from "@/domain/room/entities/room";
 
 export default class RoomRepository implements RoomRepositoryInterface {
   async create(data: Room): Promise<Room> {
-    //TODO: Mudar para o client de infra/prisma/client
-    const prisma = new PrismaClient();
-    const room = await prisma.room.create({
+    const room = await client.room.create({
       data: {
         name: data.name,
         id: data.id,
@@ -19,5 +19,34 @@ export default class RoomRepository implements RoomRepositoryInterface {
       tasks: [],
       name: room.name,
     });
+  }
+
+  async joinRoom(participant: Participant, roomId: string): Promise<Room> {
+    const room = await client.room.update({
+      where: {
+        id: roomId 
+      },
+      data: {
+        users: {
+          connect: {
+            id: participant.id
+          }
+        }
+      },
+      include: {
+        users: {}
+      }
+    })    
+
+    return new Room({
+      name: room.name,
+      id: room.id,
+      participants: room.users.map(user => {
+        return new Participant({
+          name: user.name,
+          id: user.id
+        })
+      })
+    })
   }
 }
