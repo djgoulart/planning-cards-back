@@ -1,20 +1,24 @@
-import { randomUUID } from "crypto";
+import { randomUUID } from 'crypto'
 
 export type ParticipantProps = {
-  name: string;
-  id?: string;
-};
+  name: string
+  id?: string
+}
 
 export default class Participant {
-  private _id: string;
-  private _name: string;
+  private _id: string
+  private _name: string
 
   constructor(props: ParticipantProps) {
-    this._id = props.id ?? randomUUID();
-    this._name = props.name;
+    this._id = props.id ?? randomUUID()
+    this._name = props.name
   }
 
   get id(): string {
     return this._id
+  }
+
+  get name(): string {
+    return this._name
   }
 }
