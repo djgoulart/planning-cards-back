@@ -11,7 +11,18 @@
     "allowJs": true,
     "strict": true,
     "paths": {
-      "@/domain/*": ["./src/domain/*"]
+      "@/domain/*": [
+        "./src/domain/*"
+      ],
+      "@/infrastructure/*": [
+        "./src/infrastructure/*"
+      ],
+      "@/use-cases/*": [
+        "./src/use-cases/*"
+      ],
+      "@/tests/*": [
+        "./src/tests/*"
+      ]
     }
   },
   "include": [

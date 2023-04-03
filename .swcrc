@@ -1,7 +1,9 @@
 {
   "sourceMaps": "inline",
-  "module": { 
-    "type": "commonjs", "strictMode": true, "noInterop": true 
+  "module": {
+    "type": "commonjs",
+    "strictMode": true,
+    "noInterop": true
   },
   "jsc": {
     "externalHelpers": false,
@@ -13,10 +15,23 @@
     },
     "transform": {
       "legacyDecorator": true,
-      "decoratorMetadata": false      
+      "decoratorMetadata": false
     },
     "keepClassNames": true,
-    "paths": { "@/domain/*": [ "./src/domain/*" ] },
+    "paths": {
+      "@/domain/*": [
+        "./src/domain/*"
+      ],
+      "@/infrastructure/*": [
+        "./src/infrastructure/*"
+      ],
+      "@/use-cases/*": [
+        "./src/use-cases/*"
+      ],
+      "@/tests/*": [
+        "./src/tests/*"
+      ]
+    },
     "baseUrl": "."
   }
 }
