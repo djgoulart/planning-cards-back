@@ -34,11 +34,11 @@ export default class Room {
     return this._id
   }
 
-  get name(): string {
-    return this._name
-  }
-
   set id(id: string) {
     this._id = id
+  }
+
+  get name(): string {
+    return this._name
   }
 }

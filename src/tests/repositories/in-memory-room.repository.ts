@@ -5,7 +5,7 @@ import { RoomRepositoryInterface } from '@/domain/room/repository/room.repositor
 export default class InMemoryRoomRepository implements RoomRepositoryInterface {
   private items: Room[] = []
 
-  leaveRoom(participantId: string, roomId: string): Promise<void> {
+  removeUser(participantId: string, roomId: string): Promise<void> {
     this.items.forEach((room) => {
       room.participants.forEach((participant, index) => {
         if (participant.id === participantId && room.id === roomId) {

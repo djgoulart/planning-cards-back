@@ -4,7 +4,7 @@ import client from '../../client'
 import Room from '@/domain/room/entities/room'
 
 export default class RoomRepository implements RoomRepositoryInterface {
-  async leaveRoom(participantId: string, roomId: string): Promise<void> {
+  async removeUser(participantId: string, roomId: string): Promise<void> {
     await client.room.update({
       where: {
         id: roomId,

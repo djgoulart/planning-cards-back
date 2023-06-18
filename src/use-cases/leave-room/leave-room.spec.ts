@@ -20,7 +20,7 @@ describe('Leave room use case test', () => {
     let roomJoined = await repository.findById(room.id)
     expect(roomJoined.participants.length).toEqual(1)
 
-    repository.leaveRoom(participant.id, room.id)
+    repository.removeUser(participant.id, room.id)
 
     roomJoined = await repository.findById(room.id)
 
@@ -44,7 +44,7 @@ describe('Leave room use case test', () => {
     let roomJoined = await repository.findById(room.id)
     expect(roomJoined.participants.length).toEqual(1)
 
-    repository.leaveRoom(participant.id, 'inexistent-id')
+    repository.removeUser(participant.id, 'inexistent-id')
 
     roomJoined = await repository.findById(room.id)
 

@@ -1,3 +1,3 @@
 export interface UseCaseInterface {
-  execute(data: any): any;
+  execute(...data: any): any
 }
